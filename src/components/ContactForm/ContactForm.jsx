@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
+
 
 export class ContactForm extends Component { 
     state = {
@@ -7,21 +7,22 @@ export class ContactForm extends Component {
   number: ''
     }
 
-    changeHandler = ({ target: { value, name } }) => {
+   handelChange = e => {
+    const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
 
-handleSubmit = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-    const name = form.elements.name.value;
-    const number = form.elements.number.value;
-    console.log(name, number);
-    // if (this.props.contacts.find(contact => contact.name === this.state.name)) {
-    //   window.alert(`Contact ${this.state.name} is already in contacts`);
-    //   return;
-    // }
-    this.props.onSubmit({ name, number, id: nanoid(), });
+
+handleSubmit = e => {
+    e.preventDefault();
+  const { name, number } = this.state;
+    const {contacts} = this.props;
+    console.log(contacts);
+    if (contacts.find(contact => contact.name === name)) {
+      window.alert(`Contact ${name} is already in contacts`);
+      return;
+    }
+    this.props.onSubmit({ name, number });
     this.reset();
   };
     reset = () => {
@@ -35,7 +36,7 @@ render() {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>Name<input
-  onChange={this.changeHandler}
+  onChange={this.handelChange}
   type="text"
   name="name"
   value={name}
@@ -44,7 +45,7 @@ render() {
   required
         /></label>
           <label>Number<input
-  onChange={this.changeHandler}
+  onChange={this.handelChange}
   type="tel"
   name="number"
   value={number}
