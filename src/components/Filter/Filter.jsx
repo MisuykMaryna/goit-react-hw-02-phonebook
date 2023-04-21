@@ -9,9 +9,12 @@ export const Filter = ({ value, onChange }) => {
         Find contacts by name
         <input
           type="text"
+          name="filter"
           placeholder="Type name"
           value={value}
           onChange={onChange}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        required
         ></input>
       </label>
     </>

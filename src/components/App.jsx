@@ -29,12 +29,7 @@ state = {
   ChangeFilter = e => {
     this.setState({filter:e.currentTarget.value})
   }
- getVisibleContacts = () => {
-    const { contacts, filter } = this.state;
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
+
 
    onDelete = id => {
     const { contacts } = this.state;
@@ -44,18 +39,21 @@ state = {
 
 
   render() {
-
-     const { filter } = this.state;
-    const visibleContacts = this.getVisibleContacts();
+     const { contacts, filter } = this.state;
+     
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
     return (
       <>
-        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler}
           contacts={this.state.contacts}></ContactForm>
-        <ContactList items={visibleContacts}
-          onClick={this.onDelete} />
+  
         <Filter value={filter}
           onChange={this.ChangeFilter} />
+        
+         <ContactList items={visibleContacts}
+          onClick={this.onDelete} />
       </>
    )
   };

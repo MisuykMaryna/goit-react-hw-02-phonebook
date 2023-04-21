@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 export class ContactForm extends Component { 
@@ -35,6 +36,7 @@ render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <h1>Phonebook</h1>
           <label>Name<input
   onChange={this.handelChange}
   type="text"
@@ -62,7 +64,6 @@ render() {
     
 }
 
-// ContactForm.propTypes = {
-//   onSubmitForm: PropTypes.func.isRequired,
-// //   contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
-// };
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
