@@ -4,15 +4,15 @@ import { ContactItem } from 'components/ContactItem/ContactItem';
 export const ContactList = ({ items, onClick }) => {
   return (
     <ul>
-      {items.map(({ id, name, number }) => (
+      {items.map(({ id, name, number }) => 
         <ContactItem
           key={id}
           id={id}
           name={name}
           number={number}
-          onClick={() => onClick(id)}
+          onClick={onClick}
         />
-      ))}
+      )}
     </ul>
   );
 };

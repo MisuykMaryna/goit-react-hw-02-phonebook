@@ -15,15 +15,20 @@ state = {
  filter: '',
 }
 
-  formSubmitHandler = (name, number) => {
+  formSubmitHandler = ({name, number}) => {
     const newContact = {
       id: nanoid(),
       name,
-      number
+      number,
     };
-    this.setState(({ contacts }) => ({
-      contacts: [newContact, ...contacts],
-    }));
+    this.setState(({ contacts }) => {
+      const includeName = contacts.find(contact => contact.name === name);
+      if (includeName) {
+        alert(`${name} is already in contacts`);
+      } else {
+        return { contacts: [newContact, ...contacts] };
+      }
+    });
   };
 
   ChangeFilter = e => {
@@ -37,17 +42,19 @@ state = {
     this.setState({ contacts: updatesContacts });
   };
 
+   getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(({ name }) =>
+    name.tolowerCase().includes(filter.toLowerCase()),
+    )
+}
 
   render() {
-     const { contacts, filter } = this.state;
-     
-    const visibleContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+     const { filter } = this.state;
+      const visibleContacts = this.getVisibleContacts();
     return (
       <>
-        <ContactForm onSubmit={this.formSubmitHandler}
-          contacts={this.state.contacts}></ContactForm>
+        <ContactForm onSubmit={this.formSubmitHandler}/>
   
         <Filter value={filter}
           onChange={this.ChangeFilter} />
