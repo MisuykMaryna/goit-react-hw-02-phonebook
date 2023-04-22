@@ -1,0 +1,18 @@
+.contactGroup {
+    display: flex;
+    width: 400px;
+    margin-bottom: 10px;
+    border: solid 2px grey;
+    border-radius: 5px;
+    margin-left: 60px;
+}
+
+.contactGroup__label {
+   
+ display: flex;
+ flex-direction: column;
+ margin-bottom: 20px;
+    
+    
+    
+        }

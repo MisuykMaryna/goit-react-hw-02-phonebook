@@ -43,11 +43,13 @@ state = {
   };
 
    getVisibleContacts = () => {
-    const { contacts, filter } = this.state;
-    return contacts.filter(({ name }) =>
-    name.tolowerCase().includes(filter.toLowerCase()),
-    )
-}
+  const { filter, contacts} = this.state;
+  const normalizedFilter = filter.toLowerCase();
+
+  return contacts.filter(({name}) =>
+    name.toLowerCase().includes(normalizedFilter),
+  );
+};
 
   render() {
      const { filter } = this.state;

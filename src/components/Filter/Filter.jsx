@@ -1,9 +1,9 @@
-
+import css from './Filter.module.css';
 import PropTypes from 'prop-types';
 
 export const Filter = ({ value, onChange }) => {
   return (
-    <div>
+    <div className={css.contactGroup}>
       <h2>Contacts</h2>
       <label>
         Find contacts by name

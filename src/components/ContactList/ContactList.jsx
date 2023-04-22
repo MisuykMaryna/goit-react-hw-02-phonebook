@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import css from './ContactList.module.css';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
 export const ContactList = ({ items, onClick }) => {
   return (
-    <ul>
+    <ul className={css.contactList}>
       {items.map(({ id, name, number }) => 
         <ContactItem
           key={id}

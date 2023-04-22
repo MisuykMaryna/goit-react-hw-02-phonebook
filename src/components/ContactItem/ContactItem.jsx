@@ -1,12 +1,12 @@
-
+import css from './ContactItem.module.css';
 import PropTypes from 'prop-types';
 
 
 export const ContactItem = ({ id, name, number, onClick }) => {
   return (
-    <li>
+    <li className={css.contactItem}>
       {name}: {number}
-      <button type="button" onClick={() => onClick(id)}>
+      <button className={css.contactItem__button}type="button" onClick={() => onClick(id)}>
         Delete
       </button>
     </li>
