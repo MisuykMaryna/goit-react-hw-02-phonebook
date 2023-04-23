@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
+import css from './App.module.css';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
@@ -55,15 +56,16 @@ state = {
      const { filter } = this.state;
       const visibleContacts = this.getVisibleContacts();
     return (
-      <>
+      <div className={css.container}>
+         <h1 className={css.title}>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler}/>
-  
+        <h2 className={css.title}>Contacts</h2>
         <Filter value={filter}
           onChange={this.ChangeFilter} />
         
          <ContactList items={visibleContacts}
           onClick={this.onDelete} />
-      </>
+      </div>
    )
   };
 }

@@ -30,10 +30,8 @@ handleSubmit = e => {
 render() {
     const { name, number } = this.state;
     return (
-      <div>
         <form className={css.contactForm} onSubmit={this.handleSubmit}>
-          <h1>Phonebook</h1>
-          <label className={css.contactForm__lable}>Name<input
+          <label className={css.contactForm__label}>Name<input
   className={css.contactForm__input}
   onChange={this.handelChange}
   type="text"
@@ -44,7 +42,7 @@ render() {
   placeholder='Name'
   required
         /></label>
-          <label>Number<input
+          <label className={css.contactForm__label}>Number<input
   className={css.contactForm__input}
   onChange={this.handelChange}
   type="tel"
@@ -58,7 +56,6 @@ render() {
         
         <button className={css.contactForm__button} type="submit">Add contact</button>
         </form>
-      </div>
     );
   };
     
